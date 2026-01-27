@@ -12,7 +12,7 @@ import java.util.List;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
-@Table(name = "library")
+@Table(name = "libraries")
 public class Library {
 
     @Id
@@ -30,7 +30,7 @@ public class Library {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "library", fetch = FetchType.LAZY)
     private List<Book> books = new ArrayList<>();
 
     public Long getId() {
@@ -53,7 +53,7 @@ public class Library {
         return books;
     }
 
-    public void setBook(List<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 }

@@ -3,17 +3,15 @@ package com.lms.api.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class LibraryDTO {
+public class MemberDTO {
     private Long id;
     private String name;
-    private String location;
+    private String email;
+    private LocalDateTime membershipExpDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private List<BookDTO> books;
-    private List<MemberDTO> members;
-
-    public LibraryDTO() {
-    }
+    private List<BookDTO> borrowedBooks;
+    private MemberProfileDTO memberProfile;
 
     public Long getId() {
         return id;
@@ -31,12 +29,12 @@ public class LibraryDTO {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -55,20 +53,22 @@ public class LibraryDTO {
         this.updatedAt = updatedAt;
     }
 
-    public List<BookDTO> getBooks() {
-        return books;
+    public List<BookDTO> getBorrowedBooks() {
+
+        return borrowedBooks;
     }
 
-    public void setBooks(List<BookDTO> books) {
-        this.books = books;
+    public void setBorrowedBooks(List<BookDTO> borrowedBooks) {
+
+        this.borrowedBooks = borrowedBooks;
     }
 
-    public List<MemberDTO> getMembers() {
-        return members;
+    public MemberProfileDTO getMemberProfile() {
+        return memberProfile;
     }
 
-    public void setMembers(List<MemberDTO> books) {
-        this.members = members;
+    public void setMemberProfile(MemberProfileDTO memberProfile) {
+        this.memberProfile = memberProfile;
     }
 
 }

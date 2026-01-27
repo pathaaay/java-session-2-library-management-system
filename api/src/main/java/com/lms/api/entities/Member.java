@@ -2,6 +2,7 @@ package com.lms.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.lms.api.dto.BookDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,20 +13,17 @@ import java.util.List;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
-@Table(name = "books")
-public class Book {
+@Table(name = "members")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String title;
+    private String name;
 
     @Column(nullable = false)
-    private String isbn;
-
-    @Column(nullable = false)
-    private String publicationYear;
+    private String email;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -35,16 +33,13 @@ public class Book {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "libraryId")
-    private Library library;
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    private MemberProfile memberProfile;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "authorId")
-    private Author author;
-
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<BookBorrowRecord> borrowedBooks = new ArrayList<>();
+
+    private LocalDateTime membershipExpDate;
 
     public Long getId() {
         return id;
@@ -54,28 +49,28 @@ public class Book {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPublication_year() {
-        return publicationYear;
+    public LocalDateTime getMembershipExpDate() {
+        return membershipExpDate;
     }
 
-    public void setPublication_year(String publicationYear) {
-        this.publicationYear = publicationYear;
+    public void setMembershipExpDate(LocalDateTime membershipExpDate) {
+        this.membershipExpDate = membershipExpDate;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -94,20 +89,12 @@ public class Book {
         this.updatedAt = updatedAt;
     }
 
-    public Library getLibrary() {
-        return library;
+    public MemberProfile getMemberProfile() {
+        return memberProfile;
     }
 
-    public void setLibrary(Library library) {
-        this.library = library;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setMemberProfile(MemberProfile memberProfile) {
+        this.memberProfile = memberProfile;
     }
 
     public List<BookBorrowRecord> getBorrowedBooks() {

@@ -1,15 +1,37 @@
-package com.lms.api.dto;
+package com.lms.api.entities;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AuthorDTO {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@Entity
+@Table(name = "authors")
+public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 100)
     private String name;
     private String biography;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-    private List<BookDTO> books;
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<Book> books = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -35,7 +57,6 @@ public class AuthorDTO {
         this.biography = biography;
     }
 
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -52,11 +73,12 @@ public class AuthorDTO {
         this.updatedAt = updatedAt;
     }
 
-    public List<BookDTO> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<BookDTO> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
+
 }

@@ -6,7 +6,7 @@ public class BookDTO {
     private Long id;
     private String title;
     private String isbn;
-    private String publication_year;
+    private String publicationYear;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LibraryDTO library;
@@ -40,11 +40,11 @@ public class BookDTO {
     }
 
     public String getPublication_year() {
-        return publication_year;
+        return publicationYear;
     }
 
-    public void setPublication_year(String publication_year) {
-        this.publication_year = publication_year;
+    public void setPublication_year(String publicationYear) {
+        this.publicationYear = publicationYear;
     }
 
     public LocalDateTime getCreatedAt() {
