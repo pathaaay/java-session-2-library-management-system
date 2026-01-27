@@ -1,8 +1,11 @@
 package com.lms.api.service;
 
+import com.lms.api.dto.AuthorDTO;
 import com.lms.api.dto.LibraryDTO;
+import com.lms.api.entities.Author;
 import com.lms.api.entities.Library;
 import com.lms.api.mapper.EntityMapper;
+import com.lms.api.repository.AuthorRepo;
 import com.lms.api.repository.LibraryRepo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -14,34 +17,34 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LibraryService {
+public class AuthorService {
     @Autowired
-    private LibraryRepo libraryRepo;
+    private AuthorRepo authorRepo;
     @Autowired
     private EntityMapper entityMapper;
 
     @Transactional()
-    public List<LibraryDTO> getAllLibraries() {
-        List<Library> data = libraryRepo.findAll();
-        return entityMapper.toLibraryDTOList(data);
+    public List<AuthorDTO> getAuthors() {
+        List<Author> data = authorRepo.findAll();
+        return entityMapper.toAuthorDTOList(data);
     }
 
     @Transactional()
-    public LibraryDTO getLibraryById(Long id) {
-        Optional<Library> library = libraryRepo.findById(id);
-        return entityMapper.toLibraryDTO(library.orElse(null));
+    public AuthorDTO getAuthorById(Long id) {
+        Optional<Author> data = authorRepo.findById(id);
+        return entityMapper.toAuthorDTO(data.orElse(null));
     }
 
     @Transactional()
-    public LibraryDTO createLibrary(Library library) {
-        Library data = libraryRepo.save(library);
-        return entityMapper.toLibraryDTO(data);
+    public AuthorDTO createAuthor(Author author) {
+        Author data = authorRepo.save(author);
+        return entityMapper.toAuthorDTO(data);
     }
 
     @Transactional()
-    public boolean deleteLibrary(Long id) {
+    public boolean deleteAuthorById(Long id) {
         try {
-            libraryRepo.deleteById(id);
+            authorRepo.deleteById(id);
             return true;
         } catch (Exception e) {
             return false;

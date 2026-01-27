@@ -1,10 +1,14 @@
 package com.lms.api.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class AuthorDTO {
     private Long id;
+
+    @NotBlank(message = "Author Name is required")
     private String name;
     private String biography;
     private LocalDateTime createdAt;
