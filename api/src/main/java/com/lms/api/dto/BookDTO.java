@@ -9,6 +9,8 @@ public class BookDTO {
     private String publication_year;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private LibraryDTO library;
+    private AuthorDTO author;
 
     public BookDTO() {
     }
@@ -59,5 +61,21 @@ public class BookDTO {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public LibraryDTO getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(LibraryDTO library) {
+        this.library = library;
+    }
+
+    public AuthorDTO getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(AuthorDTO author) {
+        this.author = author;
     }
 }

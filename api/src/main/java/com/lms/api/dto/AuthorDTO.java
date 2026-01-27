@@ -1,18 +1,15 @@
 package com.lms.api.dto;
 
-import java.awt.print.Book;
 import java.time.LocalDateTime;
+import java.util.List;
 
-public class LibraryDTO {
+public class AuthorDTO {
     private Long id;
     private String name;
-    private String location;
+    private String biography;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-
-    public LibraryDTO() {
-    }
+    private List<BookDTO> books;
 
     public Long getId() {
         return id;
@@ -30,14 +27,6 @@ public class LibraryDTO {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -53,5 +42,12 @@ public class LibraryDTO {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
+
+    public List<BookDTO> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookDTO> books) {
+        this.books = books;
+    }
 }

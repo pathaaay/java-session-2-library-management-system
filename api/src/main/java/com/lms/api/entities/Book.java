@@ -1,5 +1,6 @@
 package com.lms.api.entities;
 
+import com.lms.api.dto.AuthorDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -89,4 +90,5 @@ public class Book {
     public void setLibrary(Library library) {
         this.library = library;
     }
+
 }

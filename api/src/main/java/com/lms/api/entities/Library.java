@@ -30,7 +30,7 @@ public class Library {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     private List<Book> books = new ArrayList<>();
 
     public Long getId() {
