@@ -12,6 +12,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Console;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,7 @@ public class BookService {
 
     @Transactional()
     public List<BookDTO> getBooksByLibraryId(Long id) {
-        List<Book> data = bookRepo.findAllByLibraryId(id);
+        List<Book> data = bookRepo.findAllBooksByLibraryId(id);
         return entityMapper.toBookDTOList(data);
     }
 
