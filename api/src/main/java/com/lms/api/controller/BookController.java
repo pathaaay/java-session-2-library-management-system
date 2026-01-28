@@ -1,7 +1,6 @@
 package com.lms.api.controller;
 
 import com.lms.api.dto.BookDTO;
-import com.lms.api.entities.Author;
 import com.lms.api.entities.Book;
 import com.lms.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

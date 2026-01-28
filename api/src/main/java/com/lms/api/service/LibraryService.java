@@ -4,8 +4,6 @@ import com.lms.api.dto.LibraryDTO;
 import com.lms.api.entities.Library;
 import com.lms.api.mapper.EntityMapper;
 import com.lms.api.repository.LibraryRepo;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

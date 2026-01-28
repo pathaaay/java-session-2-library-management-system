@@ -6,8 +6,6 @@ import com.lms.api.dto.LibraryDTO;
 import com.lms.api.entities.Author;
 import com.lms.api.entities.Book;
 import com.lms.api.entities.Library;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
