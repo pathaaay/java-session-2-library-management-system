@@ -20,22 +20,27 @@ public class BookController {
     }
 
     @GetMapping("/all")
-    public List<BookDTO> getAuthors() {
+    public List<BookDTO> getBooks() {
         return bookService.getBooks();
     }
 
     @GetMapping("/{bookId}")
-    public BookDTO getAuthorById(@PathVariable long bookId) {
+    public BookDTO getBookById(@PathVariable long bookId) {
         return bookService.getBookById(bookId);
     }
 
+    @GetMapping("/library/{libraryId}")
+    public List<BookDTO> getBookByLibraryId(@PathVariable long libraryId) {
+        return bookService.getBooksByLibraryId(libraryId);
+    }
+
     @PostMapping()
-    public BookDTO createAuthor(@RequestBody Book book) {
+    public BookDTO createBook(@RequestBody Book book) {
         return bookService.createBook(book);
     }
 
     @DeleteMapping("/{bookId}")
-    public boolean deleteAuthorById(@PathVariable long bookId) {
+    public boolean deleteBookById(@PathVariable long bookId) {
         return bookService.deleteBookById(bookId);
     }
 
