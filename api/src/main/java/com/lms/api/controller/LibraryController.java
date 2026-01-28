@@ -3,16 +3,10 @@ package com.lms.api.controller;
 import com.lms.api.dto.LibraryDTO;
 import com.lms.api.entities.Library;
 import com.lms.api.service.LibraryService;
-import jakarta.validation.Valid;
-import org.modelmapper.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/library")

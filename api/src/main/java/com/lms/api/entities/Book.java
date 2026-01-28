@@ -43,6 +43,12 @@ public class Book {
     @JoinColumn(name = "authorId")
     private Author author;
 
+    @Transient
+    private Long library_id;
+
+    @Transient
+    private Long author_id;
+
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     private List<BookBorrowRecord> borrowedBooks = new ArrayList<>();
 
@@ -116,5 +122,21 @@ public class Book {
 
     public void setBorrowedBooks(List<BookBorrowRecord> borrowedBooks) {
         this.borrowedBooks = borrowedBooks;
+    }
+
+    public Long getLibrary_id() {
+        return library_id;
+    }
+
+    public void setLibrary_id(Long library_id) {
+        this.library_id = library_id;
+    }
+
+    public Long getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(Long author_id) {
+        this.author_id = author_id;
     }
 }

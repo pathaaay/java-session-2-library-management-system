@@ -48,13 +48,11 @@ public class EntityMapper {
         BookDTO bookDTO = new BookDTO();
 
         bookDTO.setId(book.getId());
+        bookDTO.setIsbn(book.getIsbn());
+        bookDTO.setTitle(book.getTitle());
         bookDTO.setCreatedAt(book.getCreatedAt());
         bookDTO.setUpdatedAt(book.getUpdatedAt());
-
-        if (book.getAuthor() != null) {
-            bookDTO.setAuthor(toAuthorDTO(book.getAuthor()));
-        }
-
+        bookDTO.setPublication_year(book.getPublication_year());
         return bookDTO;
     }
 
@@ -75,10 +73,6 @@ public class EntityMapper {
         authorDTO.setName(author.getName());
         authorDTO.setCreatedAt(author.getCreatedAt());
         authorDTO.setUpdatedAt(author.getUpdatedAt());
-        if (author.getBooks() != null) {
-            authorDTO.setBooks(toBookDTOList(author.getBooks()));
-        }
-
         authorDTO.setBiography(author.getBiography());
         return authorDTO;
     }
