@@ -46,6 +46,12 @@ public class BookService {
     }
 
     @Transactional()
+    public List<BookDTO> getBooksByAuthorId(Long id) {
+        List<Book> data = bookRepo.findAllBooksByAuthorId(id);
+        return entityMapper.toBookDTOList(data);
+    }
+
+    @Transactional()
     public BookDTO createBook(Book book) {
 
         Optional<Library> library = libraryRepo.findById(book.getLibrary_id());

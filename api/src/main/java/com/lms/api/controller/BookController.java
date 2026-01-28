@@ -33,6 +33,11 @@ public class BookController {
         return bookService.getBooksByLibraryId(libraryId);
     }
 
+    @GetMapping("/author/{authorId}")
+    public List<BookDTO> getBookByAuthorId(@PathVariable long authorId) {
+        return bookService.getBooksByAuthorId(authorId);
+    }
+
     @PostMapping()
     public BookDTO createBook(@RequestBody Book book) {
         return bookService.createBook(book);
